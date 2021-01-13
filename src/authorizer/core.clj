@@ -1,7 +1,15 @@
 (ns authorizer.core
-  (:gen-class))
+    (:gen-class)
+    (:require
+      [authorizer.parser :as p]
+      [authorizer.interpreter :as i]
+      )
+    )
 
 (defn -main
-  "I don't do a whole lot ... yet."
-  [& args]
-  (println "Hello, World!"))
+      "I love simplicity"
+      [& args]
+      (let [operations args]
+           (i/execute-transactions! (p/read-transactions operations))
+           )
+      )
